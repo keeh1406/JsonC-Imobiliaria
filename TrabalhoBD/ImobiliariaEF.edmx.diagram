@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="844abd533c4f444ea821a8b78f18e9d9" Name="Diagram1">
+        <EntityTypeShape EntityType="ImobiliariaBDModel.Tabela_Bairro" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImobiliariaBDModel.Tabela_Cidade" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImobiliariaBDModel.Tabela_Construcao" Width="1.5" PointX="9.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImobiliariaBDModel.Tabela_Estado" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImobiliariaBDModel.Tabela_Imovel" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ImobiliariaBDModel.fk_cidade_bairro" ManuallyRouted="false" />
+        <AssociationConnector Association="ImobiliariaBDModel.fk_imovel_bairro" ManuallyRouted="false" />
+        <AssociationConnector Association="ImobiliariaBDModel.fk_estado_cidade" ManuallyRouted="false" />
+        <AssociationConnector Association="ImobiliariaBDModel.fk_construcao_imovel" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

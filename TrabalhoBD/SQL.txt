@@ -1,0 +1,57 @@
+﻿drop table Tabela_Construcao;
+
+drop Table Tabela_Imovel;
+
+drop table Tabela_Bairro;
+
+drop Table Tabela_Cidade;
+
+drop table Tabela_Estado;
+
+create table Tabela_Estado (
+id_estado integer not null identity primary key,
+nome_estado varchar(50) not null);
+
+
+create table Tabela_Cidade (
+id_cidade integer not null identity primary key,
+nome_cidade varchar(50) not null,
+id_estado integer,
+CONSTRAINT fk_estado_cidade FOREIGN KEY (id_estado) REFERENCES Tabela_Estado (id_estado));
+
+
+create table Tabela_Bairro (
+id_bairro integer not null identity primary key,
+nome_bairro varchar(50) not null,
+cep integer not null,
+id_cidade integer,
+CONSTRAINT fk_cidade_bairro FOREIGN KEY (id_cidade) REFERENCES Tabela_Cidade (id_cidade));
+
+
+create table Tabela_Imovel (
+id_imovel integer not null identity primary key,
+categoria char(50) not null,
+status varchar(50) not null,
+faixa_iptu varchar(50) not null,
+faixa_condominio varchar(50) not null,
+flg_planta bit not null,
+flg_dependencia bit not null,
+flg_sacada bit not null,
+flg_protaria bit not null,
+flg_elevador bit not null,
+churrasqueira varchar(50)  not null,
+faixa_dormitorios varchar(50) not null,
+faixa_suites varchar(50) not null,
+faixa_banheiros varchar(50) not null,
+faixa_vagas varchar(50) not null,
+faixa_venda varchar(50) null,
+faixa_aluguel varchar(50) null,
+id_bairro integer,
+CONSTRAINT fk_imovel_bairro FOREIGN KEY (id_bairro) REFERENCES Tabela_Bairro (id_bairro));
+
+
+create table Tabela_Construcao (
+id_construcao integer not null identity primary key,
+ano integer null,
+id_imovel integer not null,
+CONSTRAINT fk_construcao_imovel FOREIGN KEY (id_imovel) REFERENCES Tabela_Imovel (id_imovel));

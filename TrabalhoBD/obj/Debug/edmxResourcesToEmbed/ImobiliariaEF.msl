@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ImobiliariaBDModelStoreContainer" CdmEntityContainer="ImobiliariaBDEntities">
+    <EntitySetMapping Name="Tabela_Bairro">
+      <EntityTypeMapping TypeName="ImobiliariaBDModel.Tabela_Bairro">
+        <MappingFragment StoreEntitySet="Tabela_Bairro">
+          <ScalarProperty Name="id_bairro" ColumnName="id_bairro" />
+          <ScalarProperty Name="nome_bairro" ColumnName="nome_bairro" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tabela_Cidade">
+      <EntityTypeMapping TypeName="ImobiliariaBDModel.Tabela_Cidade">
+        <MappingFragment StoreEntitySet="Tabela_Cidade">
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="nome_cidade" ColumnName="nome_cidade" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tabela_Construcao">
+      <EntityTypeMapping TypeName="ImobiliariaBDModel.Tabela_Construcao">
+        <MappingFragment StoreEntitySet="Tabela_Construcao">
+          <ScalarProperty Name="id_construcao" ColumnName="id_construcao" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="id_imovel" ColumnName="id_imovel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tabela_Estado">
+      <EntityTypeMapping TypeName="ImobiliariaBDModel.Tabela_Estado">
+        <MappingFragment StoreEntitySet="Tabela_Estado">
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="nome_estado" ColumnName="nome_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tabela_Imovel">
+      <EntityTypeMapping TypeName="ImobiliariaBDModel.Tabela_Imovel">
+        <MappingFragment StoreEntitySet="Tabela_Imovel">
+          <ScalarProperty Name="id_imovel" ColumnName="id_imovel" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="faixa_iptu" ColumnName="faixa_iptu" />
+          <ScalarProperty Name="faixa_condominio" ColumnName="faixa_condominio" />
+          <ScalarProperty Name="flg_planta" ColumnName="flg_planta" />
+          <ScalarProperty Name="flg_dependencia" ColumnName="flg_dependencia" />
+          <ScalarProperty Name="flg_sacada" ColumnName="flg_sacada" />
+          <ScalarProperty Name="flg_protaria" ColumnName="flg_protaria" />
+          <ScalarProperty Name="flg_elevador" ColumnName="flg_elevador" />
+          <ScalarProperty Name="churrasqueira" ColumnName="churrasqueira" />
+          <ScalarProperty Name="faixa_dormitorios" ColumnName="faixa_dormitorios" />
+          <ScalarProperty Name="faixa_suites" ColumnName="faixa_suites" />
+          <ScalarProperty Name="faixa_banheiros" ColumnName="faixa_banheiros" />
+          <ScalarProperty Name="faixa_vagas" ColumnName="faixa_vagas" />
+          <ScalarProperty Name="faixa_venda" ColumnName="faixa_venda" />
+          <ScalarProperty Name="faixa_aluguel" ColumnName="faixa_aluguel" />
+          <ScalarProperty Name="id_bairro" ColumnName="id_bairro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

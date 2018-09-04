@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ImobiliariaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tabela_Bairro">
+    <Key>
+      <PropertyRef Name="id_bairro" />
+    </Key>
+    <Property Name="id_bairro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome_bairro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cep" Type="int" Nullable="false" />
+    <Property Name="id_cidade" Type="int" />
+  </EntityType>
+  <EntityType Name="Tabela_Cidade">
+    <Key>
+      <PropertyRef Name="id_cidade" />
+    </Key>
+    <Property Name="id_cidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome_cidade" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_estado" Type="int" />
+  </EntityType>
+  <EntityType Name="Tabela_Construcao">
+    <Key>
+      <PropertyRef Name="id_construcao" />
+    </Key>
+    <Property Name="id_construcao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ano" Type="int" />
+    <Property Name="id_imovel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tabela_Estado">
+    <Key>
+      <PropertyRef Name="id_estado" />
+    </Key>
+    <Property Name="id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome_estado" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tabela_Imovel">
+    <Key>
+      <PropertyRef Name="id_imovel" />
+    </Key>
+    <Property Name="id_imovel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoria" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_iptu" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_condominio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="flg_planta" Type="bit" Nullable="false" />
+    <Property Name="flg_dependencia" Type="bit" Nullable="false" />
+    <Property Name="flg_sacada" Type="bit" Nullable="false" />
+    <Property Name="flg_protaria" Type="bit" Nullable="false" />
+    <Property Name="flg_elevador" Type="bit" Nullable="false" />
+    <Property Name="churrasqueira" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_dormitorios" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_suites" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_banheiros" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_vagas" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faixa_venda" Type="varchar" MaxLength="50" />
+    <Property Name="faixa_aluguel" Type="varchar" MaxLength="50" />
+    <Property Name="id_bairro" Type="int" />
+  </EntityType>
+  <Association Name="fk_cidade_bairro">
+    <End Role="Tabela_Cidade" Type="Self.Tabela_Cidade" Multiplicity="0..1" />
+    <End Role="Tabela_Bairro" Type="Self.Tabela_Bairro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabela_Cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="Tabela_Bairro">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_construcao_imovel">
+    <End Role="Tabela_Imovel" Type="Self.Tabela_Imovel" Multiplicity="1" />
+    <End Role="Tabela_Construcao" Type="Self.Tabela_Construcao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabela_Imovel">
+        <PropertyRef Name="id_imovel" />
+      </Principal>
+      <Dependent Role="Tabela_Construcao">
+        <PropertyRef Name="id_imovel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_estado_cidade">
+    <End Role="Tabela_Estado" Type="Self.Tabela_Estado" Multiplicity="0..1" />
+    <End Role="Tabela_Cidade" Type="Self.Tabela_Cidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabela_Estado">
+        <PropertyRef Name="id_estado" />
+      </Principal>
+      <Dependent Role="Tabela_Cidade">
+        <PropertyRef Name="id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_imovel_bairro">
+    <End Role="Tabela_Bairro" Type="Self.Tabela_Bairro" Multiplicity="0..1" />
+    <End Role="Tabela_Imovel" Type="Self.Tabela_Imovel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tabela_Bairro">
+        <PropertyRef Name="id_bairro" />
+      </Principal>
+      <Dependent Role="Tabela_Imovel">
+        <PropertyRef Name="id_bairro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ImobiliariaBDModelStoreContainer">
+    <EntitySet Name="Tabela_Bairro" EntityType="Self.Tabela_Bairro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tabela_Cidade" EntityType="Self.Tabela_Cidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tabela_Construcao" EntityType="Self.Tabela_Construcao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tabela_Estado" EntityType="Self.Tabela_Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tabela_Imovel" EntityType="Self.Tabela_Imovel" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_cidade_bairro" Association="Self.fk_cidade_bairro">
+      <End Role="Tabela_Cidade" EntitySet="Tabela_Cidade" />
+      <End Role="Tabela_Bairro" EntitySet="Tabela_Bairro" />
+    </AssociationSet>
+    <AssociationSet Name="fk_construcao_imovel" Association="Self.fk_construcao_imovel">
+      <End Role="Tabela_Imovel" EntitySet="Tabela_Imovel" />
+      <End Role="Tabela_Construcao" EntitySet="Tabela_Construcao" />
+    </AssociationSet>
+    <AssociationSet Name="fk_estado_cidade" Association="Self.fk_estado_cidade">
+      <End Role="Tabela_Estado" EntitySet="Tabela_Estado" />
+      <End Role="Tabela_Cidade" EntitySet="Tabela_Cidade" />
+    </AssociationSet>
+    <AssociationSet Name="fk_imovel_bairro" Association="Self.fk_imovel_bairro">
+      <End Role="Tabela_Bairro" EntitySet="Tabela_Bairro" />
+      <End Role="Tabela_Imovel" EntitySet="Tabela_Imovel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
